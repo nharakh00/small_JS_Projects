@@ -1,0 +1,152 @@
+UI mistakes
+
+Consistency in Button Styling:
+You have separate styles for regular buttons (btn class), clear button (clear_btn class), 
+and equal button (equal_btn class). While this is fine, you might consider maintaining consistency in styling. 
+For example, you could use the same background color for all buttons and adjust the color for the clear and e
+
+Responsive Design:
+Your current design is suitable for desktop screens, but you might want 
+to consider making it responsive for smaller screens, especially for mobile devices. Y
+ou can use media queries to adjust the styling based on the screen size.
+
+Text-alignment-screen:
+You might want to center the text in the calculator screen. You can achieve 
+this by setting the text-align property to center.
+
+Fuctionality 
+
+Areas for improvement:
+Use Strict Mode:
+Add "use strict" at the beginning of your JavaScript file to enable strict mode. This can help catch common coding errors 
+and prevent the use of some problematic features.
+Avoid Using innerHTML for Buttons:
+Instead of accessing the innerHTML property of the buttons, consider using the value attribute for the buttons with numbers 
+and operators. This can make your code more semantic.
+Then, in your JavaScript, you can get the value using button.value:
+Improve parse Function:
+While the parse function works for basic arithmetic operations, it's essential to handle potential errors. 
+For example, division by zero or invalid expressions could cause issues. You might want to include error handling to make 
+your calculator more robust.
+
+Consider Using eval Instead of Function for Simple Calculations:
+For simple calculator applications, using eval might be a more straightforward alternative to creating a new 
+function with Function. However, keep in mind the security implications, 
+especially if dealing with untrusted input.
+
+Brute Force and wrong solution
+const buttons = document.querySelectorAll(".btn");
+
+for(i = 0; i < button.length; i++) {
+
+    buttons[i].addEventListener('click', function(){
+        console.log("You pressed either a number or operator");
+        console.log(buttons[i].innerHTML);
+    })
+} 
+
+when using a loop to attach event listeners, as the value of i is not captured in a closure. By the time the event listener 
+function is executed (when a button is clicked), the loop has likely completed, and i is equal to button.length.
+To fix this, you can use a closure to capture the value of i at each iteration. Here's a modified version of your code:
+
+const buttons = document.querySelectorAll(".btn");
+
+for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', (function(index) {
+        return function() {
+            console.log("You pressed either a number or operator");
+            console.log(buttons[index].innerHTML);
+        };
+    })(i));
+}
+
+This uses an immediately-invoked function expression (IIFE) to create a closure, capturing the current value of i for each 
+iteration. This way, when the event listener function is executed, it will reference the correct i value. Note the use of 
+let in the loop declaration, which ensures that i is scoped to the loop block.
+*/
+
+/*
+// Going with the brute force solution 
+const btnSeven = button[0];
+button[0].addEventListener('click', function(){
+        console.log(button[0].innerHTML);
+        calcExpr += button[0].innerHTML;
+    })
+
+const btnEight = button[1];
+button[1].addEventListener('click', function(){
+        console.log(button[1].innerHTML);
+        calcExpr += button[1].innerHTML;
+    })
+
+const btnNine = button[2];
+button[2].addEventListener('click', function(){
+        console.log(button[2].innerHTML);
+        calcExpr += button[2].innerHTML;
+    })
+
+const btnPlus = button[3];
+button[3].addEventListener('click', function(){
+        console.log(button[3].innerHTML);
+        calcExpr += button[3].innerHTML;
+    })
+
+const btnFour = button[4];
+button[4].addEventListener('click', function(){
+        console.log(button[4].innerHTML);
+        calcExpr += button[4].innerHTML;
+    })
+
+const btnFive = button[5];
+button[5].addEventListener('click', function(){
+        console.log(button[5].innerHTML);
+        calcExpr += button[5].innerHTML;
+    })
+
+const btnSix = button[6];
+button[6].addEventListener('click', function(){
+        console.log(button[6].innerHTML);
+        calcExpr += button[6].innerHTML;
+    })
+
+const btnMult = button[7];
+button[7].addEventListener('click', function(){
+        console.log(button[7].innerHTML);
+        calcExpr += button[7].innerHTML;
+    })
+
+const btnOne = button[8];
+button[8].addEventListener('click', function(){
+        console.log(button[8].innerHTML);
+        calcExpr += button[8].innerHTML;
+    })
+
+const btnTwo = button[9];
+button[9].addEventListener('click', function(){
+        console.log(button[9].innerHTML);
+        calcExpr += button[9].innerHTML;
+    })
+
+const btnThree = button[10];
+button[10].addEventListener('click', function(){
+        console.log(button[10].innerHTML);
+        calcExpr += button[10].innerHTML;
+    })
+
+const btnMinus = button[11];
+button[11].addEventListener('click', function(){
+        console.log(button[11].innerHTML);
+        calcExpr += button[11].innerHTML;
+    })
+
+const btnZero = button[12];
+button[12].addEventListener('click', function(){
+        console.log(button[12].innerHTML);
+        calcExpr += button[12].innerHTML;
+    })
+
+const btnDiv = button[13]
+button[13].addEventListener('click', function(){
+        console.log(button[13].innerHTML);
+        calcExpr += button[13].innerHTML;
+    })
