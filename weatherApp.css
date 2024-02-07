@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.currentWeather {
+    border: solid black 2px;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+}
+
+.xDay {
+    width: 100%;
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-evenly;
+    border: solid black 2px;
+    margin-top: 1rem;
+}
+
+.day {
+    display: flex; 
+    flex-direction: column;
+    border: solid black 2px;
+}
