@@ -147,9 +147,9 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?lat=49.22610&lon=-123.09
         }
 
         const dOfWeek = document.querySelectorAll('.day');
-        const arrOfArrs = [arr0, arr1, arr2, arr3, arr4, arr5];
+        const arrOfArrs = [arr0, arr1, arr2, arr3, arr4];
 
-        for(let k =0; k < 6; k++) {
+        for(let k =0; k < 5; k++) {
             
             let len = arrOfArrs[k].length;
 
